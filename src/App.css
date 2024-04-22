@@ -62,8 +62,6 @@
   cursor: pointer;
 }
 
-
-
 .foto-forca {
   width: 500px;
   height: 500px;
@@ -74,13 +72,14 @@
   display: flex;
   justify-content: center;
   align-items: center; 
-  margin-top: 50px;;
+  margin-top: 50px;
 }
 
 .escolher {
   background-color: green;
   margin-top: -400px;
   margin-left: 100px;
+  margin-bottom: 300px;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -92,27 +91,44 @@
 
 .letras {
   display: flex;
-  flex-wrap: wrap; /* Permite que as letras quebrem a linha conforme necessário */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
+  flex-wrap: wrap; 
+  justify-content: center; 
+  align-items: center; 
   width: 90%; /* Define a largura como 90% da largura da tela */
   max-width: 800px; /* Define uma largura máxima de 800px para manter a legibilidade */
   margin: 0 auto; /* Define margens automáticas para centralizar horizontalmente */
 }
 
 
-.botao-letra {
+.botao-letra-off {
   background-color: #999;
   border: none;
   width: 50px;
   height: 50px;
   font-size: 24px; 
-  margin: 5px; /* Adiciona margem entre os botões */
+  margin: 5px;
+  transition: background-color 0.1s ease;
+  border-radius: 15%;
+}
+
+.botao-letra-on {
+  background-color: #61dafb;
+  border: none;
+  width: 50px;
+  height: 50px;
+  font-size: 24px; 
+  margin: 5px;
   cursor: pointer;
   transition: background-color 0.1s ease;
   border-radius: 15%;
 }
 
-.botao-letra:hover {
+.botao-letra-on:hover {
   background-color: #ccc;
+}
+
+.palavra-adivinhada {
+  padding: 10px 20px;
+  font-size: 30px;
+
 }
