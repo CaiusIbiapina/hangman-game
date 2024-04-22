@@ -5,24 +5,43 @@ import palavras from './palavras'
 import { useState } from 'react';
 
 function App() {
-  const alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
   const [jogoIniciado, setJogoIniciado] = useState(false);
   const [palavra, setPalavra] = useState('');
-  const [palavraAdivinhada, setPalavraAdivinhada] = useState('');
+  const [palavraAdivinhada, setPalavraAdivinhada] = useState([]);
   
   const iniciarJogo = () => {
     setJogoIniciado(true);
     const palavraSorteada = palavras[Math.floor(Math.random() * palavras.length)];
     setPalavra(palavraSorteada);
+    
 
     // Criar a palavra a ser adivinhada com underlines
-    let palavraComUnderlines = '';
+    const palavraComUnderlines = [];
     for (let i = 0; i < palavraSorteada.length; i++) {
-      palavraComUnderlines += '_  ';
+      palavraComUnderlines.push('_  ');
     }
     setPalavraAdivinhada(palavraComUnderlines);
-
+    console.log(palavraSorteada)
   };
+
+  function verificarLetra(letra) {
+    console.log(palavra)
+    const palavraRascunho = []
+    console.log(letra)
+    for (let i = 0; i < palavraAdivinhada.length; i++) {
+      if(letra == palavra[i]) {
+        palavraRascunho.push(letra) 
+        console.log(palavraRascunho)
+        console.log(palavra[i])
+      } else {
+        palavraRascunho[i] = '_  '
+        console.log(palavraRascunho)
+      }
+    }
+
+    setPalavraAdivinhada(palavraRascunho)
+  }
 
   return (
     <div className="App">
@@ -41,7 +60,7 @@ function App() {
 
       <div className='letras'>
       {alfabeto.map((letra, index) => (
-          <button className={jogoIniciado ? 'botao-letra-on' : 'botao-letra-off'} key={index} disabled={!jogoIniciado}>{letra}</button>
+          <button onClick={() => verificarLetra(letra)} className={jogoIniciado ? 'botao-letra-on' : 'botao-letra-off'} key={index} disabled={!jogoIniciado}>{letra}</button>
         ))}
       </div>
 
